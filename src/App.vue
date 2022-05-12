@@ -1,27 +1,46 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div id="app">
+    <TodoList />
+  </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import HelloWorld from "./components/HelloWorld.vue";
+import TodoList from "./components/TodoList.vue";
 
 @Options({
   components: {
-    HelloWorld,
+    TodoList,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  mounted() {
+    document.body.classList.add("body");
+  }
+}
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  background-image: url("../public/bg.jpg");
+  background-size: cover;
+
+  height: 100%;
+}
+button {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: black;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+button:hover {
+  color: yellow;
+  background-color: rgb(174, 174, 0);
 }
 </style>
