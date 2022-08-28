@@ -3,6 +3,7 @@ module.exports = defineConfig({
   transpileDependencies: true,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   publicPath: "/",
 =======
   publicPath: "/project name/",
@@ -10,4 +11,7 @@ module.exports = defineConfig({
 =======
   publicPath: process.env.NODE_ENV === "production" ? "/vue-inlamning/" : "/",
 >>>>>>> parent of 8177a5a (vue config change number 200)
+=======
+  publicPath: process.env.NODE_ENV === "production" ? "/vue-inlamning/" : "",
+>>>>>>> parent of 24bec37 (fsdfsdf)
 });
