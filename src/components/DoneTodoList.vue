@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h2>Finished todos</h2>
+    <h2>Added to basket</h2>
     <div v-for="(task, i) in tasks" :key="i" class="full-width">
       <div v-if="task.done == true" class="item">
         <h3>{{ task.name }}</h3>
-        <p>Done!</p>
+        <p>Bought</p>
         <div class="button-container">
           <button
             @click="
@@ -43,6 +43,8 @@ export default class DoneTodoList extends Vue {
   }
   removeHandeler(i: number) {
     this.tasks.splice(i, 1);
+    localStorage.setItem("items", JSON.stringify(this.tasks));
+    console.log("updated ls");
   }
 }
 </script>

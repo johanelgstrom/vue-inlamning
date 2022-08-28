@@ -1,6 +1,6 @@
 <template>
   <div class="add-container">
-    <h2>Add todo</h2>
+    <h2>Add grocery</h2>
     <input v-model="content" />
     <button @click="addHandeler">Add</button>
   </div>

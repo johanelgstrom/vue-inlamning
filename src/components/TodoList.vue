@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="component">
-      <h2>Todos</h2>
+      <h2>Groceries</h2>
       <div v-for="(task, i) in tasks" :key="i" class="full-width">
         <div v-if="task.done == false" class="full-width">
           <div
@@ -13,7 +13,7 @@
             class="item"
           >
             <h3>{{ task.name }}</h3>
-            <p>Not done</p>
+            <p>Not bought</p>
             <button
               @click="
                 () => {
@@ -44,11 +44,8 @@ import AddTodo from "./AddTodo.vue";
   },
 })
 export default class TodoList extends Vue {
-  tasks: Task[] = [
-    new Task("Köpa bananer", false),
-    new Task("Äta bananer", false),
-    new Task("Factchecka Wikipediaartikeln om bananer", false),
-  ];
+  tasks: Task[] = [];
+
   checkIfNotDone(i: number) {
     if (this.tasks[i].done == false) {
       return true;
@@ -57,9 +54,22 @@ export default class TodoList extends Vue {
 
   doneHandeler(i: number) {
     this.tasks[i].done = true;
+    localStorage.setItem("items", JSON.stringify(this.tasks));
+    console.log("updated ls");
   }
   handleAddTask(t: Task) {
     this.tasks.push(t);
+    localStorage.setItem("items", JSON.stringify(this.tasks));
+    console.log("updated ls");
+  }
+  mounted() {
+    let localString: string | null = localStorage.getItem("items");
+    if (localString === "" || localString === null) {
+      console.log("empty");
+    } else {
+      this.tasks = JSON.parse(localString);
+      console.log("got from ls");
+    }
   }
 }
 </script>
